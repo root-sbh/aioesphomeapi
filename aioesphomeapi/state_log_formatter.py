@@ -224,6 +224,15 @@ def _format_climate(state: ClimateState, info: EntityInfo | None) -> str | None:
     tt = state.target_temperature
     if not isnan(tt):
         parts.append(_detail(tag, "Target Temperature", f"{tt:.2f}°C"))
+    mnt = state.min_temperature
+    if not isnan(mnt):
+        parts.append(_detail(tag, "Minimum Temperature", f"{mnt:.1f}°C"))
+    mxt = state.max_temperature
+    if not isnan(mxt):
+        parts.append(_detail(tag, "Maximum Temperature", f"{mxt:.1f}°C"))
+    tts = state.target_temperature_step
+    if not isnan(tts):
+        parts.append(_detail(tag, "Temperature Step", f"{tts:.1f}°C"))
     return "\n".join(parts)
 
 

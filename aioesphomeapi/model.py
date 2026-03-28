@@ -795,6 +795,15 @@ class ClimateState(EntityState):
     custom_preset: str = ""
     current_humidity: float = 0
     target_humidity: float = 0
+    min_temperature: float = converter_field(
+        default=0.0, converter=fix_float_single_double_conversion
+    )
+    max_temperature: float = converter_field(
+        default=0.0, converter=fix_float_single_double_conversion
+    )
+    target_temperature_step: float = converter_field(
+        default=0.0, converter=fix_float_single_double_conversion
+    )
 
     def preset_compat(self, api_version: APIVersion) -> ClimatePreset | None:
         if api_version < APIVersion(1, 5):
